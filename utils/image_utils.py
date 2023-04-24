@@ -27,4 +27,8 @@ class ImageUtil():
             self.img.save(f"{image_name}.png","PNG")
         elif format=='WEBP':
             self.img.save(f"{image_name}.webp","WEBP")
+        return self
 
+
+    def close(self):
+        self.img.close

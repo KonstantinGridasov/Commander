@@ -12,11 +12,12 @@ def start_invert(_path):
     progressMax=len(os.listdir(_path))
     dialog = wx.ProgressDialog("A progress box", "Time remaining", progressMax,
         style=wx.PD_CAN_ABORT | wx.PD_ELAPSED_TIME | wx.PD_REMAINING_TIME)
+
     count = 0
     for files in os.listdir(_path):
         image_path=os.path.join(_path, files)
         name =name_destination+os.sep+image_path.split(os.sep)[len(image_path.split(os.sep)) - 1].split('.')[0]
-        ImageUtil(_path=image_path).invert_image().save_image(format=format,image_name=name)
+        ImageUtil(_path=image_path).invert_image().save_image(format=format,image_name=name).close()
        
         count = count + 1
         dialog.Update(count)
@@ -101,6 +102,6 @@ class MyFrame(wx.Frame):
         self.save.Disable()
         self.btn_end.Disable()
         self.btn_start.Disable()
-         
-        start_invert()
+        
+        start_invert(os.path.join(name_from))
         self.Close()
