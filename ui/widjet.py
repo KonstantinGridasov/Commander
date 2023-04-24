@@ -27,7 +27,7 @@ def start_invert(_path):
 
 class MyFrame(wx.Frame):    
     def __init__(self):
-        super().__init__(parent=None, title='Inverse Imaga (alpha)')
+        super().__init__(parent=None, title='Commander')
         panel = wx.Panel(self)
         sizer = wx.BoxSizer(wx.VERTICAL)
         self.path_start = wx.TextCtrl(panel)
@@ -63,9 +63,9 @@ class MyFrame(wx.Frame):
         global name_destination
         global name_from
         name = event.GetEventObject().myname
-        dialog_header="Choose Line"
+        dialog_header="Choose Image"
         if name=="from":
-            dialog_header="Choose folder line"
+            dialog_header="Choose folder image"
         else:
             dialog_header="Choose folder save"
 
@@ -93,7 +93,7 @@ class MyFrame(wx.Frame):
     
     def on_save(self,event):
         if not name_from:
-            wx.MessageBox('Choose Folder Line', 'Error', wx.OK | wx.ICON_ERROR)
+            wx.MessageBox('Choose Folder Image', 'Error', wx.OK | wx.ICON_ERROR)
             return
         if not name_destination:
             wx.MessageBox('Choose Folder Save','Error', wx.OK | wx.ICON_ERROR)
@@ -102,5 +102,5 @@ class MyFrame(wx.Frame):
         self.btn_end.Disable()
         self.btn_start.Disable()
          
-        start_invert(git remote add origin https://github.com/KonstantinGridasov/Commander.gitos.path.join(name_from))       
+        start_invert()
         self.Close()
